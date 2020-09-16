@@ -1,38 +1,37 @@
-				<section>
-						<article>
-							<header>
-								<h2>{{titulo}}</h2>
-							</header>
+<section>
+	<article>
+		<header>
+			<h2>{{titulo}}</h2>
+		</header>
 
-							<p>{{conteudo}}</p>
+		<p>{{conteudo}}</p>
 
-							<br>
-							<hr>
-							<br>
+		<br>
+		<hr>
+		<br>
+		<form method="post" action="http://localhost:81/crudmvc/?pagina=post&metodo=addComent">
+			<span>Nome:</span><br>
+			<input type="text" name="nome"><br><br>
 
-							<form method="post" action="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=post&metodo=addComent">
-								<span>Nome:</span><br>
-								<input type="text" name="nome"><br><br>
+			<span>Mensagem:</span><br>
+			<textarea name="msg"></textarea><br><br>
 
-								<span>Mensagem:</span><br>
-								<textarea name="msg"></textarea><br><br>
+			<input type="hidden" name="id" value="{{id}}">
 
-								<input type="hidden" name="id" value="{{id}}">
+			<input type="submit" value="Enviar">
+		</form>
+		<br><br>
 
-								<input type="submit" value="Enviar">
-							</form>
-							<br><br>
+		{% if comentarios == false %}
+		<p>Nenhum comentário encontrado para essa postagem</p>
+		{% else %}
+		{% for coment in comentarios %}
+		<h3>{{coment.nome}}</h3>
+		<p>{{coment.mensagem}}</p>
+		<br>
+		{% endfor %}
+		{% endif %}
 
-							{% if comentarios == false %}
-								<p>Nenhum comentário encontrado para essa postagem</p>
-							{% else %}
-								{% for coment in comentarios %}
-									<h3>{{coment.nome}}</h3>
-									<p>{{coment.mensagem}}</p>
-									<br>
-								{% endfor %}
-							{% endif %}
+	</article>
 
-						</article>
-
-				</section>
+</section>
