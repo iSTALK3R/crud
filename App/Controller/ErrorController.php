@@ -4,6 +4,6 @@ class ErrorController
 {
     public function index()
     {
-        echo "Pagina de Erro";
+        echo "404 - Page not found";
     }
 }

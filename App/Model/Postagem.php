@@ -70,4 +70,44 @@ class Postagem
 
         return true; // Caso tudo ocorra bem, retorna true.
     }
+
+    public static function update($data)
+    {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE postagem SET titulo = :tit, conteudo = :cont WHERE id = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':tit', $data['titulo']);
+        $sql->bindValue(':cont', $data['conteudo']);
+        $sql->bindValue(':id', $data['id']);
+
+        $res = $sql->execute();
+
+        if (!$res) {
+            throw new Exception("Não foi possível atualizar a postagem");
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public static function delete($id)
+    {
+        $conn = Connection::getConn();
+
+        $sql = "DELETE FROM postagem WHERE id = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+
+        $res = $sql->execute();
+
+        if (!$res) {
+            throw new Exception("Não foi possível excluir a publicação!");
+            
+            return false;
+        }
+
+        return true;
+    }
 }

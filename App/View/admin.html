@@ -18,7 +18,8 @@
 		<th>{{postagem.id}}</th>
 		<th>{{postagem.titulo}}</th>
 		<th><a href="http://localhost:81/crudmvc/?pagina=admin&metodo=change&id={{postagem.id}}">ALTERAÇÃO</a></th>
-		<th><a href="http://localhost:81/crudmvc/?pagina=admin&metodo=delete&id={{postagem.id}}">DELEÇÃO</a></th>
+		<th><a href="http://localhost:81/crudmvc/?pagina=admin&metodo=delete&id={{postagem.id}}"
+				onclick="return confirm('Tem certeza que quer excluir a postagem?')">DELEÇÃO</a></th>
 	</tr>
 	{% endfor %}
 
